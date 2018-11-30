@@ -1,4 +1,12 @@
-require("dotenv").config();
+<DOCTYPE! html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+    
+    require("dotenv").config();
 
 var keys = require('./keys.js')
 
@@ -22,8 +30,13 @@ spotify.search({type: 'track', query: 'All the Small Things'}, function(err, dat
     for (i = 0; i < songs.length; i++) {
         
         console.log(songs[i].artists[0].name);
-        console.log("-----------");
-        console.log(songs[i].preview_url);
 
     }
 })
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
