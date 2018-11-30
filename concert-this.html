@@ -1,0 +1,38 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript"></script>
+    
+<script> 
+
+function foo() {
+
+searchUrl = "https://rest.bandsintown.com/artists/Drake/events?app_id=codingbootcamp";
+
+$.ajax({
+    url: searchUrl,
+    method: "GET",
+}).then(
+    function(response) {
+        console.log(response);
+  })
+
+};
+
+foo();
+
+ </script>
+
+   
+
+</head>
+<body>
+    
+</body>
+</html>

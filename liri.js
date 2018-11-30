@@ -6,6 +6,8 @@ var Spotify = require('node-spotify-api');
 
 var axios = require('axios');
 
+var moment = require('moment');
+
 var appname = process.argv[2];
 
 var keyword = process.argv[3];
@@ -18,6 +20,32 @@ if ((appname == "spotify-this-song") && (typeof keyword !== 'undefined')) {
         secret: keys.spotify.secret
     });
    
+    console.log(keyword);
+
+    var input = process.argv;
+
+    var keyword = "'" ;
+    
+    for (var i = 3; i < input.length; i++) {
+
+        
+        if (i > 3 && i < input.length) {
+            
+            keyword = keyword + "+" + input[i];
+           
+        }
+    
+        else {
+
+        keyword = keyword + input[i];
+        console.log("HOOCHY MAMA!");
+    
+        }
+    
+    }
+
+    keyword = keyword + "'";
+
     console.log(keyword);
 
     spotify.search({type: 'track', query: keyword}, function(err, data) {
@@ -127,10 +155,52 @@ else if ((appname == 'movie-this') && (typeof keyword == 'undefined')) {
             console.log("Actors: " + response.data.Actors);
             console.log("------");
         })
+}  
+
+else if ((appname == 'concert-this') && (typeof keyword !== 'undefined'))  {
+
+    var input = process.argv;
+
+    var keyword;
+    
+    for (var i = 3; i < input.length; i++) {
+
+        if (i > 3 && i < input.length) {
+          keyword = keyword + "+" + input[i];
+         
+        }
+        else {
+          keyword = input[i];
+      
+        }
+      }
+    
+    searchUrl = "https://rest.bandsintown.com/artists/" + keyword + "/events?app_id=codingbootcamp";
+
+    axios.get(searchUrl).then(
+        function(response) {
+
+        var events = response.data;
+        
+        for (i = 0; i < events.length; i++) {
+
+            console.log("Venue Name: " + events[i].venue.name);
+            console.log("Location: " + events[i].venue.city + ", " + events[i].venue.country);
+            console.log("Date: " + moment(events[i].datetime).format("MM/DD/YYYY"));
+            console.log("-------------");
+        }
+
+            
+        })
+}
+
+else if ((appname == 'concert-this') && (typeof keyword == 'undefined')) {
+
+    console.log("Please choose an artist to search for");
 }
 
 else {
 
-    console.log("NAH BRO");
+    console.log("Please choose a command");
 }
 
