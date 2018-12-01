@@ -41,9 +41,12 @@ if (appname == 'do-what-it-says') {
         keyword = terms[1];
 
       }
+      
       everything();
 
     })
+
+   
 
 }
 
@@ -206,8 +209,6 @@ function everything() {
     else if ((appname == 'concert-this') && (typeof keyword !== 'undefined'))  {
     
         var input = process.argv;
-    
-        keyword;
         
         for (var i = 3; i < input.length; i++) {
     
@@ -221,6 +222,8 @@ function everything() {
             }
           }
         
+        console.log(keyword);
+
         searchUrl = "https://rest.bandsintown.com/artists/" + keyword + "/events?app_id=codingbootcamp";
     
         axios.get(searchUrl).then(
