@@ -22,15 +22,15 @@ if (appname == 'do-what-it-says') {
 
     console.log("how now brown cow");
     
-   fs.readFile("random.txt", "utf8", function(error, data){
+    fs.readFile("random.txt", "utf8", function(error, data){
+ 
+        if (error) {
     
-    if (error) {
-
-        console.log(error);
-    }
-
+            console.log(error);
+        } 
+    
         inputArray = data;
-        console.log("This is: " + inputArray);
+        console.log(inputArray);
 
     var terms = inputArray.split(",");
 
@@ -41,9 +41,10 @@ if (appname == 'do-what-it-says') {
         keyword = terms[1];
 
       }
-      everything();
-
+    
     })
+
+    everything();
 
 }
 
@@ -54,9 +55,7 @@ else {
 
 function everything() {
 
-    console.log("The input array is: " + inputArray);
-    console.log("The command name is: " + appname);
-    console.log("The keyword is: " + keyword);
+    console.log(inputArray);
 
     if ((appname == "spotify-this-song") && (typeof keyword !== 'undefined')) {
     
@@ -151,7 +150,7 @@ function everything() {
     }
     
     else if ((appname == 'movie-this') && (typeof keyword !== 'undefined')) {
-
+    
         var input = process.argv;
     
         keyword = " ";
@@ -253,3 +252,10 @@ function everything() {
     
 
 }
+
+
+
+
+
+
+ 
