@@ -16,11 +16,7 @@ var appname = process.argv[2];
 
 var keyword = process.argv[3];
 
-console.log(process.argv);
-
 if (appname == 'do-what-it-says') {
-
-    console.log("how now brown cow");
     
    fs.readFile("random.txt", "utf8", function(error, data){
     
@@ -30,7 +26,6 @@ if (appname == 'do-what-it-says') {
     }
 
         inputArray = data;
-        console.log("This is: " + inputArray);
 
     var terms = inputArray.split(",");
 
@@ -57,9 +52,6 @@ else {
 
 function everything() {
 
-    console.log("The input array is: " + inputArray);
-    console.log("The command name is: " + appname);
-    console.log("The keyword is: " + keyword);
 
     if ((appname == "spotify-this-song") && (typeof keyword !== 'undefined')) {
     
@@ -68,8 +60,6 @@ function everything() {
             id: keys.spotify.id,
             secret: keys.spotify.secret
         });
-       
-        console.log(keyword);
     
         var input = process.argv;
     
@@ -87,15 +77,12 @@ function everything() {
             else {
     
             keyword = keyword + input[i];
-            console.log("HOOCHY MAMA!");
         
             }
         
         }
     
         keyword = keyword + "'";
-    
-        console.log(keyword);
     
         spotify.search({type: 'track', query: keyword}, function(err, data) {
         
@@ -221,8 +208,6 @@ function everything() {
           
             }
           }
-        
-        console.log(keyword);
 
         searchUrl = "https://rest.bandsintown.com/artists/" + keyword + "/events?app_id=codingbootcamp";
     
