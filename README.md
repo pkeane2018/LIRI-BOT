@@ -10,7 +10,6 @@ The user can run the application by navigating into the repository and typing 'n
 
 ## Technology used
 * JavaScript
-* jQuery
 * Nodejs
 * Node packages:
   * Axios, Dotenv, Moment
